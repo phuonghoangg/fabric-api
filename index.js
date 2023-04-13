@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 const userRouter = require('./routes/userRouter')
 const typeProductRouter = require('./routes/typeProductRouter')
 const productRouter = require('./routes/productRouter')
+const blogRouter = require('./routes/blogRouter')
+const typeBlogRouter = require('./routes/typeBlogRouter')
 
 dotenv.config();
 const app = express();
@@ -24,6 +26,8 @@ app.use(cors());
 app.use('/v1/user',userRouter)
 app.use('/v2/type-product',typeProductRouter)
 app.use('/v3/product',productRouter)
+app.use('/v4/type-blog',typeBlogRouter)
+app.use('/v5/blog',blogRouter)
 
 app.listen(8000, () => {
     console.log("server is running 8k");

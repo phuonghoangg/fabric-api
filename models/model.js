@@ -73,9 +73,44 @@ const typeProductSchema = mongoose.Schema({
 })
 
 
+const blogSchema = mongoose.Schema({
+    title: { 
+        type: String,
+        required: true,
+        default: '',
+    },
+    description: { 
+        type: String,
+        required: true,
+        default: '',
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
+    type: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'TypeBlog'
+    }
+} ,{ timestamps: true },)
+const typeBlogSchema = mongoose.Schema({
+    typeTitle: {
+        type: String,
+        required: true,
+        default: '',
+    },
+    blogs: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Blog'
+        }
+    ]
+})
 
 
 let User = mongoose.model('User',userSchema)
 let Product = mongoose.model('Product',productSchema)
 let TypeProduct = mongoose.model('TypeProduct',typeProductSchema)
-module.exports = {User,Product,TypeProduct}
+let Blog = mongoose.model('Blog',blogSchema)
+let TypeBlog = mongoose.model('TypeBlog',typeBlogSchema)
+module.exports = {User,Product,TypeProduct,Blog,TypeBlog}
