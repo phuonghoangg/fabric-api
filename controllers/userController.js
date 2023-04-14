@@ -80,10 +80,10 @@ const userController = {
     }
   },
   logoutUser: async (req, res) => {
-    res.clearCookie("refreshToken");
-    refreshTokens = refreshTokens.filter(
-      (token) => token !== req.cookies.refreshToken
-    );
+    // res.clearCookie("refreshToken");
+    // refreshTokens = refreshTokens.filter(
+    //   (token) => token !== req.cookies.refreshToken
+    // );
     res.status(200).json("logout success");
   },
   getAllUser: async (req, res) => {

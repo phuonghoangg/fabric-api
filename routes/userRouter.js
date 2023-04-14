@@ -8,7 +8,7 @@ router.post('/register',userController.registerUser)
 router.post('/login', userController.loginUser);
 router.get('/', middlewareController.verifyToken, userController.getAllUser);
 
-
+router.post('/logout', middlewareController.verifyToken, userController.logoutUser);
 //send mail 
 router.get('/send-mail', mailController.sendMailRequest)
 router.get('/send-mail-query', mailController.sendMailQuery)
