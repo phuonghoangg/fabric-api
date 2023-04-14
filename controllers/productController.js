@@ -16,6 +16,17 @@ const productController = {
       return res.status(500).json(error);
     }
   },
+  allProductPagi: async (req,res)=> { 
+  let  skip = req.body.skip
+   let limit = req.body.limit
+    try {
+      const countProduct = await Product.find().select("id")
+      const allProduct = await Product.find().populate("type", "typeName").skip(skip*limit).limit(limit);
+      return res.status(200).json({allProduct: allProduct, count:countProduct.length});
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
   getAllProduct: async (req, res) => {
     try {
       const allProduct = await Product.find().populate("type", "typeName");
